@@ -33,9 +33,10 @@ $routes->setAutoRoute(true);
 //$routes->get('/', 'Login::index');
 
 //$routes->get('kategori/(:any)', 'admin\kategori::selectWhere/$1');
+$routes->get('/login', 'Admin\Login::index');
 
-$routes->group('admin',function($routes){
 
+$routes->group('admin', ['filter' => 'Auth'],function($routes){
 	$routes->add('/','Admin\adminpage::index');
 	//kategori
 	$routes->add('kategori','Admin\kategori::select');

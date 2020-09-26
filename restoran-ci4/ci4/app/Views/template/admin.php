@@ -23,7 +23,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav col-6">
         <li class="nav-item active">
             <a class="nav-link" href="<?= base_url()?>/admin/kategori">Kategori</a>
         </li>
@@ -37,10 +37,28 @@
             <a class="nav-link" href="<?= base_url()?>/admin/order">Order</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?= base_url()?>/admin/orderdetail">OrderDetail</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<?= base_url()?>/admin/user">User</a>
+        </li>
+        </ul>
+    </div>
+    <div>
+    <ul class="navbar-nav ">
+            <li class="nav-item dropdown mr-2">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="nav-icon fas fa-user mr-1"></i>  <?php 
+            if (!empty(session()->get('user'))) {
+                echo ' ';
+                echo session()->get('email');
+            }
+            ?>
+            </a>
+            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">        
+            <a class="nav-link"  href="<?= base_url()?>/admin/login/logout">
+                <i class="nav-icon fas fa-user-slash"></i> logout
+            </a>
+            </div>
         </li>
         </ul>
     </div>
