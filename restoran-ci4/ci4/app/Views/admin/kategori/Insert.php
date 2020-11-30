@@ -44,7 +44,7 @@
   </div>  
 </div>
 
-<?= $this->endSection() ?> \
+<?= $this->endSection() ?> 
 
 <div class="container-fluid">
   <div class="m-5">

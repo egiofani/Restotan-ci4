@@ -14,19 +14,21 @@ class Login extends BaseController
 		if ($this->request->getMethod() == 'post') {
 			$email = $this->request->getPost('email');
 			$password = $this->request->getPost('password');
-			$password = password_verify($password,' ');
-			
+ 
 			$model = new User_M();
-			$user = $model->where(['email'=>$email , 'password'=>$password , 'aktif' => 1])->first();
-			
-			if ($user) {
-				$this->setSession($user);
-				return redirect()->to(base_url("/admin"));	
+			$user = $model->where(['email'=>$email,'aktif'=>1])->first();
+ 
+			if (empty($user)) {
+				 $data['info'] = "Email Salah !!!";
 			} else {
-				$data['info']="User atau Password Salah !";
+			   if (password_verify($password,$user['password'])) {
+				 $this->setSession($user);
+				 return redirect()->to(base_url('/admin'));
+			   } else {
+				 $data['info'] = "Password Salah !!!";
+			   }
 			}
-			
-		}
+		 }
 		 return view('admin/login');
 	}
 
@@ -48,7 +50,7 @@ class Login extends BaseController
 	public function logout()
 	{
 		session()->destroy();
-		return redirect()->to(base_url('/login'));
+		return redirect()->to(base_url('/admin/login'));
 	}
 
 	

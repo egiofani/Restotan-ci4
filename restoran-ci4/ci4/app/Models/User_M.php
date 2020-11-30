@@ -29,31 +29,9 @@ class User_M extends Model
         ]
     ];    
 
-    public function verifyEmail($email)
-    {
-        $builder = $this->db->table('tbluser');
-        $builder->where('email',$email);
-        $result = $builder->get();
-        if (!empty($result->getResultArray()))
-         {
-            return $result->getRowArray();
-        }else {
-            return false;
-        }
-    }
+    
 
-    public function updateAt($id)
-    {
-        $builder = $this->db->table('tbluser');
-        $builder->where('iduser', $id);
-        $builder->update(['update_at'=>date('Y-m-d h:i:s')]);
-        if ($this->db->affectedRows()==1)
-         {
-            return true;
-        }else {
-            return false;
-        }
-    }
+    
 }
 
 ?>

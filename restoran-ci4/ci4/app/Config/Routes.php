@@ -30,10 +30,31 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-//$routes->get('/', 'Login::index');
+$routes->add('/','Front\Home::index');
+$routes->group('/',function($routes){
+	$routes->add('logout','Auth::logout');
+	$routes->add('login','Auth::viewlogin');
+	$routes->add('keranjang','Front\Cart::index');
+	$routes->add('authlogin','Auth::authlogin');
+	$routes->add('register','Auth::viewregister');
+	$routes->add('hapus/(:any)','Front\Cart::hapus/$1');
+	$routes->add('authregister','Auth::authregister');
+	$routes->add('keranjang/plus/(:any)/(:any)', 'Front\Cart::plus/$1/$2');
+	$routes->add('keranjang/minus/(:any)/(:any)', 'Front\Cart::minus/$1/$2');
+	$routes->add('tambah-ke-keranjang/(:any)','Front\Cart::tambah_ke_keranjang/$1');
+});
+
+$routes->group('/',['filter' => 'Auth2'],function($routes){
+	$routes->add('checkout','Front\Checkout::index');
+	$routes->add('bayar', 'Front\Cart::insertorder');
+	$routes->add('success', 'Front\Checkout::sukses');
+	$routes->add('historypembelian', 'Front\Historypembelian::index');
+	$routes->add('statuspembayaran', 'Front\Statuspembayaran::index');
+});
 
 //$routes->get('kategori/(:any)', 'admin\kategori::selectWhere/$1');
-$routes->get('/login', 'Admin\Login::index');
+$routes->get('/admin/login', 'Admin\Login::index');
+$routes->add('login','Auth::viewlogin');
 
 
 $routes->group('admin', ['filter' => 'Auth'],function($routes){

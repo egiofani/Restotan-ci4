@@ -31,6 +31,9 @@
             <a class="nav-link" href="<?= base_url()?>/admin/menu">Menu</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="<?= base_url()?>/admin/banner">Banner</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="<?= base_url()?>/admin/pelanggan">Pelanggan</a>
         </li>
         <li class="nav-item">

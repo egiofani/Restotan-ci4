@@ -46,29 +46,31 @@ class Menu extends BaseController
 
     public function insert()
 	{
-		$model = new menu_M();
-        
+		$modelmenu = new menu_M();
+        $model = new Kategori_M();
 
 		$request = \Config\Services::request();
 		$file =  $request -> getFile('gambar');
 		$name = $file -> getName();
-		$data=[
-			'menu' => $request->getPost('menu'),
-			'harga' => $request->getPost('harga'),
-			'gambar' => $name,
 
+		
+
+		$data = [
+			'menu' => $request->getPost('menu'),
+			'idkategori' => $request->getPost('idkategori'),
+			'harga' => $request->getPost('harga'),
+			'idkategori' => $request->getPost('idkategori'),
+			'gambar' => $name
 		];
 
-		// if ($model -> insert($_POST)===false) {
+
+		// if ($model -> insert($data)===false) {
 		// 	$error = $model->errors();
 		// 	session()->setFlashdata('info', $error['menu']);
 		// 	return redirect()->to(base_url()."/admin/menu/create");
 
 		// }else {
-		// 	return redirect()->to(base_url()."/admin/menu");
-
-		// }
-		$model->insert($data);
+		$modelmenu->insert($data);
 		$file->move('./upload');
 			return redirect()->to(base_url()."/admin/menu");
 
@@ -93,7 +95,8 @@ class Menu extends BaseController
     
     public function update()
 	{
-		$model = new menu_M();
+		$modelmenu = new menu_M();
+		$model = new Kategori_M();
 		
 		$request = \Config\Services::request();
 		$file =  $request -> getFile('gambar');
@@ -110,10 +113,11 @@ class Menu extends BaseController
 			'menu' => $request->getPost('menu'),
 			'kategori' => $request->getPost('kategori'),
 			'harga' => $request->getPost('harga'),
-			'gambar' => $name
+			'gambar' => $name,
+			
 
 		];
-		$model->update($id,$data);
+		$modelmenu->update($id,$data);
 
 	
 		return redirect()->to(base_url()."/admin/menu");

@@ -35,11 +35,12 @@
                                   <input type="text" class="form-control required digits" value="<?=$menu['harga']?>"  name="harga" >
                             </div>
                             <div class="form-group">
+                            <div class="form-group">
                             <label>Kategori</label>
-                              <select class="form-control select2" data-placeholder="Pilih Kategori" name="kategori" value="<?=$menu['kategori']?>" style="width: 100%;">
-                                <option selected="selected"></option>
+                              <select class="form-control select2" data-placeholder="Pilih Kategori" name="idkategori"  style="width: 100%;">
+                                <option name="kategori" selected="selected"></option>
                                   <?php foreach($kategori as $key => $value): ?>
-                                    <option><?= $value['kategori'] ?></option>
+                                    <option name="idkategori" value="<?= $value['idkategori'] ?>"><?= $value['kategori'] ?></option>
                                   <?php endforeach?>
                               </select>
                             </div>

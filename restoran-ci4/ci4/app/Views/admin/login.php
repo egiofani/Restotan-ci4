@@ -167,6 +167,13 @@ body {
 <!--   <img src="http://www.officialpsds.com/images/thumbs/Spiderman-Logo-psd59240.png" alt="Logo" title="Logo" width="138"> -->
   </div>
   <h1 class="display1 mb-5">Login Admin Restoran</h1>
+    <?php
+                if (!empty($info)) {
+                    echo '<div class="alert alert-danger font-weight-bold" role="alert">';
+                    echo $info;
+                    echo '</div>';
+                }
+                ?>
   <p class="subhead"></p>
   <form action="<?= base_url() ?>/admin/login" method="post" class="" role="form">
     <div id="form-login-username" class="form-group">

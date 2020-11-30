@@ -36,10 +36,10 @@
                             </div>
                             <div class="form-group">
                             <label>Kategori</label>
-                              <select class="form-control select2" data-placeholder="Pilih Kategori" name="kategori"  style="width: 100%;">
+                              <select class="form-control select2" data-placeholder="Pilih Kategori" name="idkategori"  style="width: 100%;">
                                 <option name="kategori" selected="selected"></option>
                                   <?php foreach($kategori as $key => $value): ?>
-                                    <option name="kategori"><?= $value['kategori'] ?></option>
+                                    <option name="idkategori" value="<?= $value['idkategori'] ?>"><?= $value['kategori'] ?></option>
                                   <?php endforeach?>
                               </select>
                             </div>
